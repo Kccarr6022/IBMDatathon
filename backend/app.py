@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-from tradingview_ta import TA_Handler, Interval, Exchange
 from datetime import datetime
 import threading
 import time
@@ -44,19 +43,9 @@ post_schema = PostSchema()
 posts_schema = PostSchema(many=True)
 
 
-#background
-def collect_closes():
-    """Threaded function
-    """
-
-    while True:
-        pass
-
-@app.route('/post', methods=['POST'])
-
 @app.route('/', methods=['GET'])
 def mainroute():
-    candle = db.session.query(POST).order_by(POST.id.desc()).first() # sample query 
+    candle = db.session.query(POST).order_by(POST.id.desc()).first() # sample query
     return post_schema.jsonify(candle)
 
 
@@ -65,13 +54,6 @@ def fourhourclose():
     data = db.session.query(POST).all() # sample query
     return posts_schema.jsonify(data)
 
-
-def main():
-    threading.Thread(target=collect_closes).start() # background task
-    threading.Thread(target=app.run(host='0.0.0.0', port=8080,
-                     debug=True, threaded=True)).start()
-
-
 # run api endpoint
 if __name__ == '__main__':
-    main()
+    app.run()
