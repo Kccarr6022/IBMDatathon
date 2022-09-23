@@ -53,6 +53,12 @@ def collect_closes():
         pass
 
 @app.route('/post', methods=['POST'])
+def myfun():
+    return "Hi there" 
+
+@app.route('/hello', methods=['GET'])
+def yello():
+    return "lol"
 
 @app.route('/', methods=['GET'])
 def mainroute():
