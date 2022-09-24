@@ -1,0 +1,21 @@
+html {
+  background-image: url_for("static", filename= "/img/Background.png");
+}
+
+#layout {
+  background-image: url_for("static", filename= "/img/Background.png");
+  background-color: rgb(222, 199, 245);
+}
+/* Title Section */
+
+.center {
+  vertical-align: middle;
+}
+
+.logo-image {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: -6px;
+}
