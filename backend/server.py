@@ -4,7 +4,39 @@ from flask_marshmallow import Marshmallow
 import os
 import tensorflow
 
+# init app
+basedir = os.path.abspath(os.path.dirname(__file__))  # base directory
 app = Flask(__name__)
+
+# Database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'db.sqlite')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# init db and ma
+db = SQLAlchemy(app)
+ma = Marshmallow(app)
+
+# Database class
+class POST(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    time = db.Column(db.String(100))
+    close = db.Column(db.Float)
+
+    def __init__(self, id, time, close):
+        self.id = id
+        self.time = time
+        self.close = close
+
+
+# Database schema
+class PostSchema(ma.Schema):
+    class Meta:
+        fields = ('close', 'time')
+
+
+# Init schema
+post_schema = PostSchema()
+posts_schema = PostSchema(many=True)
 
 
 
