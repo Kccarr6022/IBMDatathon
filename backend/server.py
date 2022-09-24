@@ -1,5 +1,7 @@
 from flask import Flask, render_template
 import tensorflow
+from model import infer
+
 
 app = Flask(__name__)
 
@@ -7,6 +9,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/inference', method=['POST'])
+def model_inference():
+    res = infer(request.form.get("symptoms")) # request looks like { "symptoms":[] }
+    return res
 
 @app.route('/live')
 def live_parse():
