@@ -3,19 +3,21 @@ import tensorflow
 
 app = Flask(__name__)
 
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
 
 
-@app.route('/live')
-def live_parse():
+@app.route('/test')
+def test():
     # import live stream data
-    return render_template('live_parse.html')
+    return render_template('test.html')
 
-@app.route('/archieves')
-def archieves():
-    return render_template('archieves.html')
+@app.route('/results')
+def results():
+    return render_template('results.html')
 
 @app.route('/about')
 def about():
