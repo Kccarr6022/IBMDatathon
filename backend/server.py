@@ -676,15 +676,13 @@ db.session.commit()
 def index():
     return render_template('home.html')
 
-
 @app.route('/test')
 def test():
     #import data from SQL
-    symptoms = SYMPTOMS.query.all() 
-    for symptom in symptoms:
-        print(symptom.id)
-        print(symptom.symptom)
-        print(symptom.symptom_value)
+    symptoms = SYMPTOMS.query.order_by(SYMPTOMS.symptom).all() 
+    #sort data alphabetically
+    symptoms.sort(key=lambda x: x.symptom)
+
     return render_template('test.html', data = symptoms)
 
 @app.route('/results')

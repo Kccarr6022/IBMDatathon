@@ -8,17 +8,31 @@
     <div id="name" class="col-md-6" style="padding-top: 2rem; display: inline">
       Enter your name: <input type="text" name="name" value="name" />
     </div>
-    <div id="gender" style="display: inline;">
-      <h6 class="col" style="display: inline;">Select your gender</h6>
+    <div id="gender" style="display: inline">
+      <h6 class="col" style="display: inline">Select your gender</h6>
       Male <input type="radio" name="sex" value="male" /> Female
       <input type="radio" name="sex" value="female" /> Other
       <input type="radio" name="sex" value="other" />
     </div>
     <div id="symptoms">
-      <h6 class="col" style="padding-top: 2rem;">Select your symptoms</h6>
-      {% for item in data %}
-        {{item.symptom}}<input type="radio" name="symptom" value="{{item.symptom_value}}" />
-      {% endfor %}
+      <h6 class="col" style="padding-top: 2rem">Select your symptoms</h6>
+      <ul class="list-inline">
+        {% for item in data %}
+        <li>
+          {{item.symptom}}
+          <input
+            type="checkbox"
+            name="symptom"
+            value="{{item.symptom_value}}"
+          />
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <button type="button" class="btn btn-primary d-flex justify-content-center">
+      Submit
+    </button>
   </form>
 </section>
 

@@ -9,18 +9,18 @@ html {
 
 #page-container {
   position: relative;
-  min-height: 100vh;
+  min-height: 140vh;
 }
 
 #content-wrap {
-  padding-bottom: 1.25rem; /* Footer height */
+  padding-bottom: 5rem; /* Footer height */
 }
 
 #footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 1.25rem; /* Footer height */
+  height: 5rem; /* Footer height */
 }
 
 /* Title Section */
@@ -35,4 +35,13 @@ html {
   border-radius: 50%;
   overflow: hidden;
   margin-top: -6px;
+}
+
+#symptoms ul {
+  padding: 0px;
+}
+#symptoms li {
+  float: left;
+  width: 33%;
+  list-style: outside none none;
 }
