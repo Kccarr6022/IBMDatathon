@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 import os
@@ -676,8 +676,12 @@ db.session.commit()
 def index():
     return render_template('home.html')
 
-@app.route('/test')
+@app.route('/test', methods=['GET', 'POST'])
 def test():
+    if request.method == 'POST':
+        symptoms = request.form.getlist('symptom')
+        print(symptoms)
+        return 'submitted'
     #import data from SQL
     symptoms = SYMPTOMS.query.order_by(SYMPTOMS.symptom).all() 
     #sort data alphabetically
