@@ -1,8 +1,31 @@
 {%extends 'layout.html'%} {%block body%}
 <section id="home">
-  <div class="container" style="padding-top: 5rem">
-    <h2 class="d-flex justify-content-center">Diagnostics Test</h2>
+  <div class="container" style="padding-top: 2rem">
+    <h2 class="d-flex justify-content-center">Diagnostic Test</h2>
   </div>
+
+  <center>
+    <form>
+      Enter your name: <input type="text" name="name" value="name" />
+      <br />
+      <br />
+      <h6 class="col">Your gender:</h6>
+      <feildset id="group1" class="col">
+        Male: <input type="radio" name="sex" value="male" /> Female:
+        <input type="radio" name="sex" value="female" /> Other:
+        <input type="radio" name="sex" value="other" />
+      </feildset>
+      <h6 class="col">Your gender:</h6>
+      <feildset id="group1" class="col">
+        Male: <input type="radio" name="sex" value="male" /> Female:
+        <input type="radio" name="sex" value="female" /> Other:
+        <input type="radio" name="sex" value="other" />
+      </feildset>
+      <br />
+      <br />
+      <fieldset id="group2"></fieldset>
+    </form>
+  </center>
 </section>
 
 {% endblock%}

@@ -1,8 +1,69 @@
 {%extends 'layout.html'%} {%block body%}
-<section id="home">
-  <div class="container" style="padding-top: 5rem">
-    <h2 class="d-flex justify-content-center">Disease Diagnostics</h2>
-  </div>
-</section>
+<div class="limiter">
+  <div class="container" style="padding-top: 4rem;">
+    <div
+      class="container"
+      style="background: rgba(49, 153, 185, 0.067)"
+      style="padding-bottom: 0.5rem"
+    >
+      <form class="form" style="padding: 2rem">
+        <h4
+          class="jumbotron d-flex justify-content-center"
+          style="padding-bottom: 2.5rem"
+        >
+          Log in
+        </h4>
 
+        <div
+          class="d-flex justify-content-center"
+          style="padding-bottom: 5rem"
+          data-validate="Enter username"
+        >
+          <input
+            class="input100"
+            type="text"
+            name="username"
+            placeholder="Username"
+          />
+          <span class="focus-input100" data-placeholder="&#xf207;"></span>
+        </div>
+
+        <div
+          class="d-flex justify-content-center"
+          data-validate="Enter password"
+        >
+          <input
+            class="input100"
+            type="password"
+            name="pass"
+            placeholder="Password"
+          />
+          <span class="focus-input100" data-placeholder="&#xf191;"></span>
+        </div>
+
+        <div
+          id="check-box"
+          class="d-flex justify-content-center"
+          style="padding-top: 2rem"
+        >
+          <input
+            class="input-checkbox100"
+            id="ckb1"
+            type="checkbox"
+            name="remember-me"
+          />
+          <label class="label-checkbox100" for="ckb1"> Remember me </label>
+        </div>
+
+        <div class="d-flex justify-content-center" style="padding-top: 0.5rem">
+          <button class="login100-form-btn">Login</button>
+        </div>
+
+        <div class="text-center p-t-90">
+          <a class="txt1" href="#"> Forgot Password? </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock%}

@@ -42,7 +42,7 @@ posts_schema = PostSchema(many=True)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('home.html')
 
 
 @app.route('/test')
@@ -61,7 +61,7 @@ def about():
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template('index.html')
 
 
 if __name__ == "__main__":
