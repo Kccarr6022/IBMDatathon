@@ -16,28 +16,60 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
-# Database class
-class POST(db.Model):
+# Database classes
+class SYMPTOMS(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    time = db.Column(db.String(100))
-    close = db.Column(db.Float)
+    symptom = db.Column(db.String(100))
+    symptom_value = db.Column(db.String(100))
 
-    def __init__(self, id, time, close):
+    def __init__(self, id, symptom, value):
         self.id = id
-        self.time = time
-        self.close = close
+        self.symptom = symptom
+        self.symptom_value = value
+
+class CLIENTS(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    symptoms_table = db.Column(db.Integer)
+
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name
+
+class CLIENTSYMPTOMS(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    symptom = db.Column(db.String(100))
+
+    def __init__(self, id, symptom):
+        self.id = id
+        self.symptom = symptom
 
 
-# Database schema
-class PostSchema(ma.Schema):
-    class Meta:
-        fields = ('close', 'time')
+# Database schemas
+class SymptomSchema(ma.Schema):
+    class Meta: # symptom number, symptom, symptom value
+        fields = ('id', 'symptom', 'symptom_value')
+
+class ClientSchema(ma.Schema):
+    class Meta: # client id, name
+        fields = ('id', 'name')
+
+class ClientSymptomSchema(ma.Schema):
+    class Meta: # client id, symptom
+        fields = ('id', 'symptom')
 
 
 # Init schema
-post_schema = PostSchema()
-posts_schema = PostSchema(many=True)
+symptom_schema = SymptomSchema()
+symptoms_schema = SymptomSchema(many=True)
 
+client_schema = ClientSchema()
+clients_schema = ClientSchema(many=True)
+
+client_symptom_schema = ClientSymptomSchema()
+client_symptoms_schema = ClientSymptomSchema(many=True)
+
+#importing data into SQL
 
 
 @app.route('/')
@@ -48,7 +80,10 @@ def index():
 @app.route('/test')
 def test():
     # import live stream data
-    return render_template('test.html')
+    cur = db.cursor()
+    cur.execute("SELECT * FROM dataset")
+    data = cur.fetchall()
+    return render_template('test.html', data=data)
 
 @app.route('/results')
 def results():
