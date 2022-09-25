@@ -203,8 +203,7 @@ client_symptoms_schema = ClientSymptomSchema(many=True)
 130,red_sore_around_nose,2
 131,yellow_crust_ooze,3
 132,prognosis,5
-"""
-#importing data into SQL
+
 
 symptom = SYMPTOMS(17, "Cold Hands and Feet", "cold_hands_and_feets")
 db.session.add(symptom)
@@ -670,6 +669,7 @@ symptom = SYMPTOMS(132, "Prognosis", "prognosis")
 db.session.add(symptom)
 db.session.commit()
 
+"""
 
 
 @app.route('/')
