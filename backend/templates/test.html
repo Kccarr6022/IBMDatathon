@@ -4,28 +4,22 @@
     <h2 class="d-flex justify-content-center">Diagnostic Test</h2>
   </div>
 
-  <center>
-    <form>
+  <form class="container">
+    <div id="name" class="col-md-6" style="padding-top: 2rem; display: inline">
       Enter your name: <input type="text" name="name" value="name" />
-      <br />
-      <br />
-      <h6 class="col">Your gender:</h6>
-      <feildset id="group1" class="col">
-        Male: <input type="radio" name="sex" value="male" /> Female:
-        <input type="radio" name="sex" value="female" /> Other:
-        <input type="radio" name="sex" value="other" />
-      </feildset>
-      <h6 class="col">Your gender:</h6>
-      <feildset id="group1" class="col">
-        Male: <input type="radio" name="sex" value="male" /> Female:
-        <input type="radio" name="sex" value="female" /> Other:
-        <input type="radio" name="sex" value="other" />
-      </feildset>
-      <br />
-      <br />
-      <fieldset id="group2"></fieldset>
-    </form>
-  </center>
+    </div>
+    <div id="gender" style="display: inline;">
+      <h6 class="col" style="display: inline;">Select your gender</h6>
+      Male <input type="radio" name="sex" value="male" /> Female
+      <input type="radio" name="sex" value="female" /> Other
+      <input type="radio" name="sex" value="other" />
+    </div>
+    <div id="symptoms">
+      <h6 class="col" style="padding-top: 2rem;">Select your symptoms</h6>
+      {% for item in data %}
+        {{item[0]}}<input type="radio" name="symptom" value="{{item[1]}}" />
+      {% endfor %}
+  </form>
 </section>
 
 {% endblock%}
