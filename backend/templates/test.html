@@ -17,7 +17,7 @@
     <div id="symptoms">
       <h6 class="col" style="padding-top: 2rem;">Select your symptoms</h6>
       {% for item in data %}
-        {{item[0]}}<input type="radio" name="symptom" value="{{item[1]}}" />
+        {{item.symptom}}<input type="radio" name="symptom" value="{{item.symptom_value}}" />
       {% endfor %}
   </form>
 </section>
